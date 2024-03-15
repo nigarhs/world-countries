@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="up">
+        <h1>World countries list</h1>
+        <p>Total Number of countries : <span id="numberOfCountries"></span></p>
+        <p class="searchPattern">
+          <span id="inputValueSpan"></span>
+          <span id="countSpan"></span>
+        </p>
+        <button type="button" class="firstLetter" onclick="startingWord()">
+          starting word
+        </button>
+        <button type="button" class="anyLetter" onclick="containsWord()">search with any word</button>
+        <button type="button" class="ascendingOrder" onclick="ascendingOrder()">
+          <i class="fa-solid fa-arrow-down-a-z" style="color: #ffffff"></i>
+        </button>
+        <form>
+          <input type="text" placeholder="Search country.." name="search" />
+          <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
+      </div>
+      <div class="down">
+        <div class="countries"></div>
+      </div>
+    </div>
+
+    <script src="countries.js"></script>
+    <script
+      src="https://kit.fontawesome.com/4a369662d4.js"
+      crossorigin="anonymous"></script>
+    <script>
+      let numberOfCountries = document.querySelector("#numberOfCountries");
+      let allCountries = document.querySelector(".countries");
+      let input = document.querySelector("input");
+      let searchPattern = document.querySelector(".searchPattern");
+
+      numberOfCountries.innerText = countries.length;
+
+      for (let i = 0; i < countries.length; i++) {
+        let countryBox = document.createElement("div");
+
+        countryBox.setAttribute("class", "countryBox");
+
+        countryBox.innerText = countries[i];
+
+        allCountries.appendChild(countryBox);
+      }
+
+      function startingWord() {
+        let count = 0;
+        let inputValue = input.value.toLowerCase();
+        for (let i = 0; i < countries.length; i++) {
+          let countryBox = allCountries.children[i];
+          let countryName = countries[i].toLowerCase();
+
+          let countSpan = document.querySelector("#countSpan");
+          let inputValueSpan = document.querySelector("#inputValueSpan");
+
+          inputValueSpan.innerText = input.value
+          inputValueSpan.style.color = "red";
+          inputValueSpan.style.fontStyle = 'italic'
+
+          countSpan.innerText = count;
+          countSpan.style.color = "green";
+          
+          if (countryName.startsWith(inputValue)) {
+            count += 1;
+
+            searchPattern.innerHTML = `${"Countries start with " + inputValueSpan.outerHTML + " are " + countSpan.outerHTML}`;
+      
+            countryBox.classList.remove("hidden");
+
+
+          } 
+          else {
+            searchPattern.innerHTML = `${"Countries start with " + inputValueSpan.outerHTML + " are " + countSpan.outerHTML}`;
+            countryBox.classList.add("hidden");            
+          }
+        }
+      }
+    
+      function containsWord() {
+        let count = 0;
+        let inputValue = input.value.toLowerCase();
+        for (let i = 0; i < countries.length; i++) {
+          let countryBox = allCountries.children[i];
+          let countryName = countries[i].toLowerCase();
+
+          let countSpan = document.querySelector("#countSpan");
+          let inputValueSpan = document.querySelector("#inputValueSpan");
+
+          inputValueSpan.innerText = input.value
+          inputValueSpan.style.color = "red";
+          inputValueSpan.style.fontStyle = 'italic'
+
+          countSpan.innerText = count;
+          countSpan.style.color = "green";
+          
+          if (countryName.includes(inputValue)) {
+            count += 1;
+
+            searchPattern.innerHTML = `${"Countries containing " + inputValueSpan.outerHTML + " are " + countSpan.outerHTML}`;
+
+            countryBox.classList.remove("hidden");
+
+          } 
+          else {
+            searchPattern.innerHTML = `${"Countries containing " + inputValueSpan.outerHTML + " are " + countSpan.outerHTML}`;
+            countryBox.classList.add("hidden");            
+          }
+        }
+      }
+
+      let isReversed = false;
+      function ascendingOrder() {
+        let countryBoxes = document.querySelectorAll(".countryBox");
+
+        if(!isReversed){
+        let reversedOrder = countries.slice().reverse()
+
+        countryBoxes.forEach((box , index) => {
+          box.innerText = reversedOrder[index]
+        })
+        isReversed=true
+      } 
+      else {
+        countryBoxes.forEach((box,index) => {
+          box.innerText = countries[index]
+        })
+        isReversed = false
+      }
+    }
+    </script>
+  </body>
+</html>

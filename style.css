@@ -1,0 +1,93 @@
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+}
+
+.up {
+    background: url('img/globe-2.jpg');
+    width: 100%;
+    height: 285px;
+    background-size: cover;
+    background-position: center;
+    filter: grayscale(19%) opacity(75%);
+    text-align: center;
+    padding: 70px 0;
+
+    h1 {
+        text-transform: uppercase;
+        color:#fff;
+        letter-spacing: 10px;
+        font-size: 50px;
+        margin-bottom: 0px;
+    }
+
+    p {
+        color: #fff;
+        font-weight: bold;
+    }
+
+    .firstLetter , .anyLetter , .ascendingOrder {
+        text-transform: uppercase;
+        color: #fff;
+        background-color: rgb(131, 24, 232);
+        border: none;
+        padding: 10px;
+        box-shadow: 0px 20px 8px rgb(0 0 0 / 10%)
+    }
+
+    button:hover {
+        background-color: rgb(95, 15, 169);
+    }
+
+    form {
+        margin-top: 10px;
+
+        input[type=text] {
+            border-radius: 10px;
+            border: none;
+            padding: 10px 0px;
+            width: 350px;
+            text-align: center;
+        }
+
+        button[type=submit] {
+            background: none;
+            border: none;
+            color: #fff;
+
+            i{
+                font-size: 20px;
+            }
+        }
+    }
+}
+
+.countries {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    padding: 40px 400px;;
+}
+
+.countryBox {
+    border: 1px solid #fff;
+    background: url(img/map_image.jpg);
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.5) contrast(0.95);
+    border-radius: 5px;
+    text-align: center;
+    width: 150px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5px 15px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+
+.hidden {
+    display: none;
+  }
